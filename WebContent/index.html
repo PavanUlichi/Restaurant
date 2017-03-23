@@ -1,6 +1,6 @@
-<body>
 <!DOCTYPE html>
-<html lang="en"><head>
+<html lang="en">
+<head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,11 +9,13 @@
   <link href="css/mystyle.css" rel="stylesheet">
   <link href="css/font-awesome.min.css" rel="stylesheet">
   <link href="css/bootstrap-social.css" rel="stylesheet">
-
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
-
+   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+  
   <title>Ghumaghumalu</title>
 </head>
+<body>
+<div ng-app="myApp" ng-controller="equals">
   <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <div class="container">
 
@@ -31,7 +33,7 @@
           <li class="active"><a href="index.html"><span class="glyphicon glyphicon-home"
             aria-hidden="true"></span> Home</a></li>
 
-            <li><a href="aboutus.html"><span class="glyphicon glyphicon-info-sign">About</a></li>
+            <li><a href="aboutus.html"><span class="glyphicon glyphicon-info-sign">About</span></a></li>
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"
                 role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-list-alt">
@@ -48,11 +50,49 @@
 
                 <li><a href="contactus.html"><i class="fa fa-envelope" aria-hidden="true"></i> Contact</a></li>
               </ul>
-
+              
+              
             </div>
+			          <ul class="nav navbar-nav navbar-right">
+  <li><button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-user"></span>Signup</button></li>
+    
+  <li><button type="button" class="btn btn-success btn-md" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-log-in"></span>Login</button></li>
+  </ul>                     
+          
+          
           </div>
-
+    
         </nav>
+                 
+    
+     <div class="modal" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Signup by creating an account!</h4>
+        </div>
+        <div class="modal-body">
+        <form class="form-horizontal col-sm-8" action="" onsubmit>
+         <div class="form-group"> Username			:	<input type="text" class="form-control" name="username" placeholder="Enter username" required></div>
+         <div class="form-group"> Email				:	<input type="email" class="form-control" name="emailid" placeholder="Enter a valid emailId" required></div>
+         <div class="form-group"> Password			:	<input type="password" class="form-control" name="password" placeholder="Choose a password" ng-model="value1" equals="{{value2}}" required></div>
+          <div class="form-group">Re-enter Password	:	<input type="password" class="form-control" name="password1" placeholder="Re-enter password" ng-model="value2" equals="{{value1}}" required></div>
+          <div class="form-group"><button type="submit" class="btn btn-default">Submit</button></div>
+          </form>
+        
+        <div class="modal-footer">
+            </div>
+        </div>
+      </div>
+      
+    </div>
+ 
+          </div>
+          
+         
 
         <header class="jumbotron row-header">
 
@@ -114,7 +154,6 @@
                 </div>
               </div>
 
-
               <div class="row">
                 <div class="col-xs-10 col-sm-7">
                   <h1>Ghumaghumalu</h1>
@@ -128,7 +167,7 @@
 
                 </div>
               </div>
-            </header>
+            </header> 
 
             <div class="container">
               <div class="row row-content">
@@ -191,7 +230,6 @@
 
 
                   </div>
-                </div>
 
                 <footer class="row-footer">
                   <div class="container">
@@ -227,7 +265,7 @@
                 </footer>
                 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
                 <script src="js/bootstrap.min.js"></script>
-
+               
                 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
                 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
 
@@ -242,6 +280,39 @@
                       autoclose: true,
                     })
                   })
+
+                </script>
+                <script type="text/javascript">
+                'use strict';
+
+                angular.module('myApp').directive('equals', function() {
+                  return {
+                    restrict: 'A', // only activate on element attribute
+                    require: '?ngModel', // get a hold of NgModelController
+                    link: function(scope, elem, attrs, ngModel) {
+                      if(!ngModel) return; // do nothing if no ng-model
+
+                      // watch own value and re-validate on change
+                      scope.$watch(attrs.ngModel, function() {
+                        validate();
+                      });
+
+                      // observe the other value and re-validate on change
+                      attrs.$observe('equals', function (val) {
+                        validate();
+                      });
+
+                      var validate = function() {
+                        // values
+                        var val1 = ngModel.$viewValue;
+                        var val2 = attrs.equals;
+
+                        // set validity
+                        ngModel.$setValidity('equals', ! val1 || ! val2 || val1 === val2);
+                      };
+                    }
+                  }
+                });
 
                 </script>
                 <script>
@@ -260,4 +331,5 @@
                     });
                   });
                 </script>
+                </div>
               </body></html>
