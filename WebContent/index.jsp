@@ -77,10 +77,10 @@
           <h4 class="modal-title">Signup by creating an account!</h4>
         </div>
         <div class="modal-body">
-        <form class="form-horizontal col-sm-8" action="/RestaurantSamplePhaseOne/SignUp" method="post">
-         <div class="form-group"> Username			:	<input type="text" class="form-control" name="username" placeholder="Enter username" required></div>
-         <div class="form-group"> Email				:	<input type="email" class="form-control" name="emailid" placeholder="Enter a valid emailId" required></div>
-         <div class="form-group"> Password			:	<input type="password" class="form-control" name="password" id="password" placeholder="Choose a password" required></div>
+        <form class="form-horizontal col-sm-8" id="signupform" action="/RestaurantSamplePhaseOne/SignUp" method="get">
+         <div class="form-group"> Username			:	<input type="text" class="form-control" id="username" name="username" placeholder="Enter username" required></div>
+         <div class="form-group"> Email				:	<input type="email" class="form-control" id="emailid" name="emailid" placeholder="Enter a valid emailId" required></div>
+         <div class="form-group"> Password			:	<input type="password" class="form-control" id="password" name="password" id="password" placeholder="Choose a password" required></div>
           <div class="form-group">Re-enter Password	:	<input type="password" class="form-control" name="password1" id="confirm_password" placeholder="Re-enter password" required></div>
           <div class="form-group"><button type="submit" class="btn btn-default">Submit</button></div>
           </form>
@@ -267,6 +267,27 @@
                 </footer>
                 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
                 <script src="js/bootstrap.min.js"></script>
+<script type='text/javascript'>
+$(document).ready(function() {
+$( '#signupform' ) .submit( function( e ) {
+e.preventDefault();
+var ur= 'http://localhost:8080/RestaurantSamplePhaseOne/SignUp';
+var username= document.getElementById("username").value;
+var email= document.getElementById("emailid").value;
+var pass= document.getElementById("password").value;
+$.ajax( {
+	url: ur,
+	type: 'get',
+	data: "username="+ username + "&emailid=" +  email + "&password=" + pass,
+	processData: false,
+	contentType: false,
+	success: function(data){
+	$("body").html('<html><h1 style="color:white">The result is super</h1></html>');}
+	} );
+	});
+	});
+
+</script>
                
                 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
                 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
