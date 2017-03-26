@@ -25,6 +25,14 @@
     <servlet-name>SignUp</servlet-name>
     <url-pattern>/SignUp</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>Login</servlet-name>
+    <servlet-class>Login</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Login</servlet-name>
+    <url-pattern>/Login</url-pattern>
+  </servlet-mapping>
   <resource-ref>
     <description>DB Connection</description>
     <res-ref-name>jdbc/customerDataDB</res-ref-name>
