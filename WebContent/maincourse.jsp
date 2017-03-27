@@ -1,4 +1,6 @@
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
 
 <head>
@@ -23,13 +25,13 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html"><img src="img/img/logo.png" height=30 width=41></a>
+                <a class="navbar-brand" href="index.jsp"><img src="img/img/logo.png" height=30 width=41></a>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a href="index.html"><span class="glyphicon glyphicon-home"
+                    <li><a href="index.jsp"><span class="glyphicon glyphicon-home"
                          aria-hidden="true"></span> Home</a></li>
-                    <li><a href="aboutus.html">
+                    <li><a href="aboutus.jsp">
                         <span class="glyphicon glyphicon-info-sign"
                          aria-hidden="true"></span> About</a></li>
                     <li class="active" class="dropdown">
@@ -38,13 +40,13 @@
                          <span class="glyphicon glyphicon-list-alt">
                          <span >Menu</span></span> <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="appetizers.html">Appetizers</a></li>
-                            <li><a href="maincourse.html">Main Courses</a></li>
-                            <li><a href="desserts.html">Desserts</a></li>
-                            <li><a href="drinks.html">Drinks</a></li>
+                            <li><a href="appetizers.jsp">Appetizers</a></li>
+                            <li><a href="maincourse.jsp">Main Courses</a></li>
+                            <li><a href="desserts.jsp">Desserts</a></li>
+                            <li><a href="drinks.jsp">Drinks</a></li>
                         </ul>
                     </li>
-                    <li ><a href="contactus.html"><i class="fa fa-envelope" aria-hidden="true"></i> Contact</a></li>
+                    <li ><a href="contactus.jsp"><i class="fa fa-envelope" aria-hidden="true"></i> Contact</a></li>
                 </ul>
             </div>
         </div>
@@ -55,7 +57,7 @@
         <div class="row">
             <div class="col-xs-12">
                <ul class="breadcrumb">
-                   <li><a href="index.html">Home</a></li>
+                   <li><a href="index.jsp">Home</a></li>
                    <li class="active">Main Course</li>
                </ul>
             </div>
@@ -94,9 +96,9 @@
                 <div class="col-xs-5 col-xs-offset-1 col-sm-4 col-sm-offset-1">
                     <h5>Links</h5>
                     <ul class="list-unstyled">
-                      <li><a href="index.html#">Home</a></li>
-                      <li><a href="aboutus.html#">About</a></li>
-                      <li><a href="contactus.html#">Contact</a></li>
+                      <li><a href="index.jsp#">Home</a></li>
+                      <li><a href="aboutus.jsp#">About</a></li>
+                      <li><a href="contactus.jsp#">Contact</a></li>
                     </ul>
                 </div>
                 <div class="col-xs-6 col-sm-6" >

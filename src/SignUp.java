@@ -67,13 +67,13 @@ public class SignUp extends HttpServlet {
           } else {
              strErrMsg = "Email Id already registered. Please login.";
              request.setAttribute("errorMsg", strErrMsg);
-             RequestDispatcher rd= request.getRequestDispatcher("sign.jsp");
+             RequestDispatcher rd= request.getRequestDispatcher("signUpLogIn.jsp");
              rd.forward(request, response);
           }
         } catch(Exception e) {
           strErrMsg = "Unable to validate user / password in database";
           request.setAttribute("errorMsg", strErrMsg);
-          RequestDispatcher rd= request.getRequestDispatcher("sign.jsp");
+          RequestDispatcher rd= request.getRequestDispatcher("signUpLogIn.jsp");
           rd.forward(request, response);
         }
 	}

@@ -45,15 +45,15 @@ public class Login extends HttpServlet {
 				session.setAttribute("emailid", emailId);
 				response.sendRedirect(HOME_PAGE);
 			} else {
-				strErrMsg = "Invalid credentials. Please try again.";
+				strErrMsg = "Invalid credentials. Please login again.";
 				request.setAttribute("errorMsg", strErrMsg);
-				RequestDispatcher rd= request.getRequestDispatcher("login.jsp");
+				RequestDispatcher rd= request.getRequestDispatcher("signUpLogIn.jsp");
 	             rd.forward(request, response);
 			}
 		} catch (Exception e) {
 			strErrMsg = "Unable to validate user / password in database";
 			request.setAttribute("errorMsg", strErrMsg);
-			RequestDispatcher rd= request.getRequestDispatcher("login.jsp");
+			RequestDispatcher rd= request.getRequestDispatcher("signUpLogIn.jsp");
              rd.forward(request, response);
 		}
 	}

@@ -11,8 +11,6 @@
 <link href="css/mystyle.css" rel="stylesheet">
 <link href="css/font-awesome.min.css" rel="stylesheet">
 <link href="css/bootstrap-social.css" rel="stylesheet">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 
 <title>Ghumaghumalu</title>
 </head>
@@ -30,15 +28,15 @@
 					<span class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="index.html"><img
+				<a class="navbar-brand" href="index.jsp"><img
 					src="img/img/logo.png" height=30 width=41></a>
 
 				<ul class="nav navbar-nav">
 
-					<li class="active"><a href="index.html"><span
+					<li class="active"><a href="index.jsp"><span
 							class="glyphicon glyphicon-home" aria-hidden="true"></span> Home</a></li>
 
-					<li><a href="aboutus.html"><span
+					<li><a href="aboutus.jsp"><span
 							class="glyphicon glyphicon-info-sign">About</span></a></li>
 					<li class="dropdown"><a href="#" class="dropdown-toggle"
 						data-toggle="dropdown" role="button" aria-haspopup="true"
@@ -47,30 +45,22 @@
 							class="caret"></span></a>
 
 						<ul class="dropdown-menu">
-							<li><a href="appetizers.html">Appetizers</a></li>
-							<li><a href="maincourse.html">Main Courses</a></li>
-							<li><a href="desserts.html">Desserts</a></li>
-							<li><a href="drinks.html">Drinks</a></li>
+							<li><a href="appetizers.jsp">Appetizers</a></li>
+							<li><a href="maincourse.jsp">Main Courses</a></li>
+							<li><a href="desserts.jsp">Desserts</a></li>
+							<li><a href="drinks.jsp">Drinks</a></li>
 
 						</ul></li>
 
-					<li><a href="contactus.html"><i class="fa fa-envelope"
+					<li><a href="contactus.jsp"><i class="fa fa-envelope"
 							aria-hidden="true"></i> Contact</a></li>
 				</ul>
 
 
 			</div>
 			<ul class="nav navbar-nav navbar-right">
-				<li><a class="btn btn-info btn-sm"
-					href="/RestaurantSamplePhaseOne/sign.jsp"><span
-						class="glyphicon glyphicon-user"></span>Signup</a></li>
-
-				<li><a class="btn btn-info btn-sm"
-					href="/RestaurantSamplePhaseOne/login.jsp"><span
-						class="glyphicon glyphicon-user"></span>Login</a></li>
+			<li><div style="color:white">Welcome ${emailid}</div></li>
 			</ul>
-
-
 		</div>
 
 		</nav>
@@ -232,9 +222,9 @@
 				<div class="col-xs-3 col-xs-offset-3">
 					<h5>Links</h5>
 					<ul class=list-unstyled>
-						<li><a href="index.html#">Home</a></li>
-						<li><a href="aboutus.html#">About</a></li>
-						<li><a href="contactus.html#">Contact</a></li>
+						<li><a href="index.jsp#">Home</a></li>
+						<li><a href="aboutus.jsp#">About</a></li>
+						<li><a href="contactus.jsp#">Contact</a></li>
 					</ul>
 				</div>
 
@@ -283,8 +273,7 @@ $.ajax( {
 
 		<script type="text/javascript"
 			src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
-		<link rel="stylesheet"
-			href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css">
 
 		<script>
 			$(document)
