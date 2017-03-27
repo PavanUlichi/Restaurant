@@ -50,6 +50,9 @@
                     <li ><a href="contactus.jsp"><i class="fa fa-envelope" aria-hidden="true"></i> Contact</a></li>
                 </ul>
             </div>
+            <ul class="nav navbar-nav navbar-right">
+			<li><div style="color:white">Welcome <b>${username}</b></div></li>
+			</ul>
         </div>
     </nav>
 

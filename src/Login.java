@@ -26,6 +26,7 @@ public class Login extends HttpServlet {
 	String emailId, passWord;
 	final String USER = "root";
 	final String PASS = "toor";
+	String username;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -36,13 +37,13 @@ public class Login extends HttpServlet {
 		Statement stmt = null;
 		ResultSet rs = null;
 		String strErrMsg = null;
-
+		
 		HttpSession session = request.getSession();
 		boolean isValidLogon = false;
 		try {
 			isValidLogon = authenticateLogin(emailId, passWord);
 			if (isValidLogon) {
-				session.setAttribute("emailid", emailId);
+				session.setAttribute("username", username);
 				response.sendRedirect(HOME_PAGE);
 			} else {
 				strErrMsg = "Invalid credentials. Please login again.";
@@ -78,6 +79,7 @@ public class Login extends HttpServlet {
 			prepStmt.setString(2, pass);
 			ResultSet rs = prepStmt.executeQuery();
 			if (rs.next()) {
+				username = rs.getString("username");
 				System.out.println("User is present in db");
 				isValid = true;
 			}

@@ -34,6 +34,10 @@ public class SignUp extends HttpServlet {
 		userName = request.getParameter("username");
 		emailId = request.getParameter("emailid");
 		passWord = request.getParameter("password");
+		String subject = "Welcome to Ghumaghumalu!";
+		String message = "Thanks for signing up with us. We won't send any promotions emails!";
+		String fromUser = "ghumaghumalu.food@gmail.com";
+		String fromUserPassword = "Password123$";
 		 // Database credentials
         Connection conn = null;
         Statement stmt = null;
@@ -62,8 +66,9 @@ public class SignUp extends HttpServlet {
               } catch (Exception e) {
                   e.printStackTrace();
               }
+        	SendMail.send(emailId, subject, message, fromUser, fromUserPassword);
             response.sendRedirect(HOME_PAGE);
-            session.setAttribute("emailid", emailId);
+            session.setAttribute("username", userName);
           } else {
              strErrMsg = "Email Id already registered. Please login.";
              request.setAttribute("errorMsg", strErrMsg);

@@ -59,7 +59,7 @@
 
 			</div>
 			<ul class="nav navbar-nav navbar-right">
-			<li><div style="color:white">Welcome ${emailid}</div></li>
+			<li><div style="color:white">Welcome <b>${username}</b></div></li>
 			</ul>
 		</div>
 

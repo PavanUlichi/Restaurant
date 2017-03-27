@@ -7,7 +7,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Ghumaghualu Andhra Restuarant: About Us</title>
+<title>Ghumaghualu : Contact Us</title>
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <link href="css/bootstrap-theme.min.css" rel="stylesheet">
 <link href="css/font-awesome.min.css" rel="stylesheet">
@@ -53,6 +53,9 @@
 						class="fa fa-envelope" aria-hidden="true"></i> Contact</a></li>
 			</ul>
 		</div>
+		<ul class="nav navbar-nav navbar-right">
+			<li><div style="color:white">Welcome <b>${username}</b></div></li>
+			</ul>
 	</div>
 	</nav>
 	<header class="jumbotron">
