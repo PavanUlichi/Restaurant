@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -42,18 +43,18 @@ public class Login extends HttpServlet {
 			isValidLogon = authenticateLogin(emailId, passWord);
 			if (isValidLogon) {
 				session.setAttribute("emailid", emailId);
+				response.sendRedirect(HOME_PAGE);
 			} else {
-				strErrMsg = "Invalid credentials. Please login again.";
+				strErrMsg = "Invalid credentials. Please try again.";
+				request.setAttribute("errorMsg", strErrMsg);
+				RequestDispatcher rd= request.getRequestDispatcher("login.jsp");
+	             rd.forward(request, response);
 			}
 		} catch (Exception e) {
 			strErrMsg = "Unable to validate user / password in database";
-		}
-
-		if (isValidLogon) {
-			response.sendRedirect(HOME_PAGE);
-		} else {
-			session.setAttribute("errorMsg", strErrMsg);
-			response.sendRedirect(LOGIN_PAGE);
+			request.setAttribute("errorMsg", strErrMsg);
+			RequestDispatcher rd= request.getRequestDispatcher("login.jsp");
+             rd.forward(request, response);
 		}
 	}
 

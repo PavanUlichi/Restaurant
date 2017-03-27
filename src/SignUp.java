@@ -29,6 +29,7 @@ public class SignUp extends HttpServlet {
 
     final String USER = "root";
     final String PASS = "toor";
+    String strErrMsg = "";
    	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		userName = request.getParameter("username");
 		emailId = request.getParameter("emailid");
@@ -37,57 +38,44 @@ public class SignUp extends HttpServlet {
         Connection conn = null;
         Statement stmt = null;
         ResultSet rs = null;
-        String strErrMsg = null;
         
         HttpSession session = request.getSession();
         boolean isValidLogon = false;
         try {
           isValidLogon = authenticateSignup(userName, emailId);
           if(isValidLogon) {
-             session.setAttribute("emailid", emailId);
+        	  try {
+              	final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
+                  // Register JDBC driver
+                  Class.forName(JDBC_DRIVER);
+                  // ********************************************************************
+      	        // JDBC driver name and database URL
+      	        
+      	        final String DB_URL = "jdbc:mysql://localhost:3306/customerData";
+      	        // ***********************************************************************
+      	        conn = DriverManager.getConnection(DB_URL,  USER, PASS);
+                  stmt = conn.createStatement();
+                 String sql = "INSERT INTO customerData.signup" 
+                     + "(username, emailid, password)" + "VALUES('" + userName + "','" + emailId + "','" + passWord + "')";
+                  stmt.executeUpdate(sql);
+                  rs = stmt.executeQuery(sql);
+              } catch (Exception e) {
+                  e.printStackTrace();
+              }
+            response.sendRedirect(HOME_PAGE);
+            session.setAttribute("emailid", emailId);
           } else {
              strErrMsg = "Email Id already registered. Please login.";
+             request.setAttribute("errorMsg", strErrMsg);
+             RequestDispatcher rd= request.getRequestDispatcher("sign.jsp");
+             rd.forward(request, response);
           }
         } catch(Exception e) {
           strErrMsg = "Unable to validate user / password in database";
-        }
-      
-        if(isValidLogon) {
-          response.sendRedirect(HOME_PAGE);
-        } else {
           request.setAttribute("errorMsg", strErrMsg);
-          response.sendRedirect(SIGNUP_PAGE);
           RequestDispatcher rd= request.getRequestDispatcher("sign.jsp");
           rd.forward(request, response);
         }
-        
-        
-        
-        
-        
-        try {
-        	final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
-            // Register JDBC driver
-            Class.forName(JDBC_DRIVER);
-            // ********************************************************************
-	        // JDBC driver name and database URL
-	        
-	        final String DB_URL = "jdbc:mysql://localhost:3306/customerData";
-	        // ***********************************************************************
-	        conn = DriverManager.getConnection(DB_URL,  USER, PASS);
-            stmt = conn.createStatement();
-           String sql = "INSERT INTO customerData.signup" 
-               + "(username, emailid, password)" + "VALUES('" + userName + "','" + emailId + "','" + passWord + "')";
-            stmt.executeUpdate(sql);
-            rs = stmt.executeQuery(sql);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-               PrintWriter out = response.getWriter();
-               // Set response content type
-       		response.setContentType("text/html");  
-       		out.print(rs);
-
 	}
    	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

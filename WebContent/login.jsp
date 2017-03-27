@@ -31,6 +31,7 @@
 						<div class="form-group">
 							<button type="submit" class="btn btn-default">Submit</button>
 						</div>
+						<div style="color:red">${errorMsg}</div>
 					</form>
 					<div class="modal-footer"></div>
 				</div>

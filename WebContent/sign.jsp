@@ -17,10 +17,6 @@
 					<h4 class="modal-title">Signup by creating an account!</h4>
 				</div>
 				<div class="modal-body">
-					<%
-						String userlabel = (String) request.getAttribute("errorMsg");
-					%>
-					<%=userlabel%>
 					<form class="form-horizontal col-sm-8" id="signupform"
 						action="/RestaurantSamplePhaseOne/SignUp" method="post">
 						<div class="form-group">
@@ -44,6 +40,7 @@
 						<div class="form-group">
 							<button type="submit" class="btn btn-default">Submit</button>
 						</div>
+						<div style="color:red">${errorMsg}</div>
 					</form>
 					<div class="modal-footer"></div>
 				</div>
